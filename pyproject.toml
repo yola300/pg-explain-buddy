@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pg-explain-buddy"
+version = "0.1.0"
+description = "Parse PostgreSQL EXPLAIN ANALYZE output and get human-readable optimization advice"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+
+keywords = ["postgresql", "sql", "explain", "query", "optimization", "performance"]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Topic :: Database",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+db = [
+    "psycopg2-binary>=2.9",
+]
+
+web = [
+    "streamlit>=1.35",
+    "pandas>=2.0",
+]
+
+dev = [
+    "pytest>=8.0",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+    "build",
+]
+
+[project.scripts]
+pg-explain-buddy = "pg_explain_buddy.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/yola300/pg-explain-buddy"
+Issues = "https://github.com/yola300/pg-explain-buddy/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
