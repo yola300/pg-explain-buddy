@@ -1,0 +1,5 @@
+Seq Scan on orders  (cost=0.00..18450.00 rows=1 width=48) (actual time=0.054..185.432 rows=3 loops=1)
+  Filter: ((status = 'pending') AND (amount > 1000))
+  Rows Removed by Filter: 249997
+Planning Time: 0.1 ms
+Execution Time: 185.5 ms
